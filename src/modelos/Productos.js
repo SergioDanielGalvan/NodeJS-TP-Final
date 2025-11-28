@@ -96,9 +96,9 @@ export const createProducto = async ( nombre, precio, categorias, stock ) => {
       "utf-8"
     );
 
-    const products = JSON.parse(data);
+    const productos = JSON.parse(data);
 
-    products.push(product);
+    productos.push(producto);
 
     await fs.writeFile(
       path.join(__dirname, "products.json"),
