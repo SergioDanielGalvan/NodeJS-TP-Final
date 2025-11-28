@@ -21,9 +21,9 @@ export const getAllProductos = async () => {
     const data = await fs.readFile(
       path.join( __dirname, "Productos.json"), "utf-8"  );
 
-    const products = JSON.parse(data);
+    const productos = JSON.parse(data);
 
-    return products;
+    return productos;
 
   } catch (error) {
     console.error(error);
@@ -40,11 +40,11 @@ export const getProductoById = async (id) => {
       "utf-8"
     );
 
-    const products = JSON.parse(data);
+    const productos = JSON.parse(data);
 
-    const product = products.find((item) => item.id == id);
+    const producto = products.find((item) => item.id == id);
 
-    return product;
+    return producto;
   } catch ( error ) {
     console.error(error);
   }
@@ -62,7 +62,7 @@ export const createProducto = async ( nombre, precio, categorias ) => {
 
   try {
     const data = await fs.readFile(
-      path.join(__dirname, "Productoss.json"),
+      path.join(__dirname, "Productos.json"),
       "utf-8"
     );
 

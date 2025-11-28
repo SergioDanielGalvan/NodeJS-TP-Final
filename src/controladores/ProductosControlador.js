@@ -52,7 +52,7 @@ export const createProducto = async ( req, res ) => {
 
   const { nombre, precio, categorias } = req.body;
 
-  const producto = await model.createProduct( nombre, precio, categorias );
+  const producto = await model.createProducto( nombre, precio, categorias );
 
   res.status(201).json( producto );
 };
