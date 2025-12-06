@@ -12,6 +12,8 @@ import {
   getAllProductosWithStock,
   createProducto,
   deleteProductoById,
+  updateAllProductosWithStock,
+  updateAllProductosWithPrecio  
 } from "../controladores/ProductosControlador.js";
 
 // Rutas de productos Publicas
@@ -26,7 +28,7 @@ router.post("/productos", auth, createProducto);
 // Privada y Admin
 router.delete("/productos/:id", auth, deleteProductoById);
 router.put("/productos/stock/:id", auth, updateAllProductosWithStock);
-router.put("/productos/precio/:id", auth, updateAllProductosWithStock);
+router.put("/productos/precio/:id", auth, updateAllProductosWithPrecio);
 
 //router.post("/auth/login", loginusuario);
 

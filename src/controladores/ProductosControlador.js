@@ -149,6 +149,31 @@ export const createProducto = async ( req, res ) => {
   res.status(201).json( producto );
 };
 
+export const updateAllProductosWithStock = async ( req, res ) => {  
+  try {
+    const { id } = req.params;
+    const { stock } = req.body;
+    const result = await modelo.updateAllProductosWithStock( id, stock );
+    res.status(200).json( result );
+  } catch ( error ) {
+    res.status(500).json({ error: "Error del servidor" });
+  } 
+  finally {
+  }
+};
+
+export const updateAllProductosWithPrecio = async ( req, res ) => {  
+  try {
+    const { id } = req.params;  
+    const { precio } = req.body;
+    const result = await modelo.updateAllProductosWithPrecio( id, precio );
+    res.status(200).json( result );
+  } catch ( error ) {
+    res.status(500).json({ error: "Error del servidor" });
+  }
+  finally {
+  } 
+};
 class Producto  {
   constructor( id, nombre, precio, categorias, stock ) {
     this.id = id;

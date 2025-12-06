@@ -101,6 +101,9 @@ export const getProductoByNombre = async ( nombre ) => {
     let sql = 'SELECT id, nombre, precio, stock, categorias FROM productos WHERE nombre LIKE ?%';
     const db = await connection();
     const [producto] = await db.execute(sql, [nombre] );
+    if ( !productos ) {
+      return { "error": "No se encontraron productos"};
+    }
     return producto;
   } catch ( error ) {
     console.error(error);
@@ -114,6 +117,9 @@ export const updateStockById = async ( id, stock ) => {
     let sql = 'UPDATE productos SET stock = ? WHERE id = ?';
     const db = await connection();
     const [result] = await db.execute(sql, [stock, id] );
+    if ( !productos ) {
+      return { "error": "No se encontró producto"};
+    }
     return result;
   } catch ( error ) {
     console.error(error);
@@ -127,6 +133,9 @@ export const deleteProductoById = async ( id ) => {
     let sql = 'DELETE FROM productos WHERE id = ?';
     const db = await connection();
     const [result] = await db.execute(sql, [id] );
+    if ( !productos ) {
+      return { "error": "No se encontró producto"};
+    }
     return result;
   } catch ( error ) {
     console.error(error);
@@ -147,4 +156,52 @@ export const createProducto = async ( nombre, precio, categorias, stock ) => {
   finally {
   }
 
+};
+
+export const getAllProductosByCategoria = async ( categoria ) => {  
+  try {
+    let sql = 'SELECT id, nombre, precio, stock, categorias FROM productos WHERE JSON_CONTAINS(categorias, ?)';
+    const db = await connection();
+    const [productos] = await db.execute(sql, [ `"${categoria}"` ] ); 
+    if ( !productos ) {
+      return { "error": "No se encontraron productos"};
+    }
+    return productos;
+  } catch ( error ) {
+    console.error(error);
+  } 
+  finally {
+  }
+};
+
+export const updateAllProductosWithStock = async ( id, stock ) => {
+  try {
+    let sql = 'UPDATE productos SET stock = ? WHERE id = ?';  
+    const db = await connection();
+    const [result] = await db.execute(sql, [ stock, id ] );
+    if ( !result ) {
+      return { "error": "No se encontró producto"};
+    } 
+    return result;
+  } catch ( error ) {
+    console.error(error);
+  }
+  finally {
+  }
+};
+
+export const updateAllProductosWithPrecio = async ( id, precio ) => {
+  try {
+    let sql = 'UPDATE productos SET precio = ? WHERE id = ?';
+    const db = await connection();
+    const [result] = await db.execute(sql, [ precio, id ] );
+    if ( !result ) {
+      return { "error": "No se encontró producto"};
+    }
+    return result;
+  } catch ( error ) {
+    console.error(error);
+  }
+  finally {
+  }
 };
