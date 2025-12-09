@@ -16,7 +16,7 @@ import {
   updateAllProductosWithPrecio  
 } from "../controladores/ProductosControlador.js";
 
-// Rutas de productos Publicas
+// Rutas de productos públicas
 router.get("/productos", getAllProductos);
 router.get("/productos/:id", getProductoById);
 router.get("/productos/nombre/:nombre", getProductoByNombre);
