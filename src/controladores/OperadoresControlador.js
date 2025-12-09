@@ -126,4 +126,3 @@ export const updateOperadorById = async ( req, res ) => {
     finally {
     };
 };
-    

@@ -1,7 +1,6 @@
 import connection from "../controladores/conexion_db.js";
 import { query } from "../controladores/pool_mySQL.js/";
 
-
 export const getAllOperadores = async () => {
     try {
         let sql = 'SELECT id, nombre, email, rol FROM operadores';  
@@ -141,4 +140,3 @@ export const updateOperadorById = async ( id, operadorData ) => {
     finally {
     }   
 };
-

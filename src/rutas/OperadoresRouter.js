@@ -22,6 +22,7 @@ router.get("/operadores/email/:email", getOperadorByEmail);
 
 // Rutas de productos privadas y Admin  
 router.post("/operadores", auth, createOperador);
-router.delete("/operadores/:email", auth, deleteOperadorByEmail);
+router.delete("/operadores/email/:email", auth, deleteOperadorByEmail);
+router.delete("/operadores/:id", auth, deleteOperadorById);
 
 export default router;
